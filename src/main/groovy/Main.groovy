@@ -11,11 +11,11 @@ try {
     def usersData = parseResponse(responseData)
 
     if (usersData != null) {
+      //If need to filter empty records - uncomment
+      //usersData = filterRecordsWithEmptyFields(usersData)
+
       def filteredUsers = filterUsersBySalary(usersData, 3500)
       def sortedUsers = sortUsersByName(filteredUsers)
-
-      //If need to filter empty records - uncomment
-      //def sortedUsers = filterRecordsWithEmptyFields(sortUsersByName(filteredUsers))
 
       outputToCSV(sortedUsers, outputPath)
       println('CSV file has been generated successfully.')
